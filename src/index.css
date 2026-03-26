@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+  /* Cozy Soft Dark Theme */
+  --bg: #13141f; /* Deep, soft charcoal-indigo */
+  --bg-surface: #1e2030; /* Softer, lighter indigo-grey */
+  --bg-card: #2a2d40; /* Soft purple-grey card */
+  
+  --fg: #e2e8f0; /* Soft white */
+  --fg-muted: #94a3b8; /* Muted blue-grey */
+  
+  --accent: #a5b4fc; /* Soft Periwinkle/Indigo */
+  --accent-light: #c7d2fe; /* Very soft pastel blue */
+  --accent-glow: rgba(165, 180, 252, 0.15);
+  
+  --radius-lg: 28px;
+  --radius-xl: 40px; /* Extra rounded for "soft" feel */
+}
+
+/* Themes */
+[data-theme="emerald"] {
+  --bg: #06100c;
+  --bg-surface: #0a1a14;
+  --bg-card: #122b22;
+  --accent: #6ee7b7;
+  --accent-light: #a7f3d0;
+  --accent-glow: rgba(110, 231, 183, 0.15);
+}
+[data-theme="rose"] {
+  --bg: #120608;
+  --bg-surface: #1a0a0d;
+  --bg-card: #2b1216;
+  --accent: #fda4af;
+  --accent-light: #fecdd3;
+  --accent-glow: rgba(253, 164, 175, 0.15);
+}
+[data-theme="amber"] {
+  --bg: #100d06;
+  --bg-surface: #1a150a;
+  --bg-card: #2b2312;
+  --accent: #fcd34d;
+  --accent-light: #fde68a;
+  --accent-glow: rgba(252, 211, 77, 0.15);
+}
+[data-theme="sky"] {
+  --bg: #060e12;
+  --bg-surface: #0a161a;
+  --bg-card: #12252b;
+  --accent: #7dd3fc;
+  --accent-light: #bae6fd;
+  --accent-glow: rgba(125, 211, 252, 0.15);
+}
+[data-theme="violet"] {
+  --bg: #0e0612;
+  --bg-surface: #160a1a;
+  --bg-card: #25122b;
+  --accent: #c4b5fd;
+  --accent-light: #ddd6fe;
+  --accent-glow: rgba(196, 181, 253, 0.15);
+}
+
+body {
+  background-color: var(--bg);
+  /* Subtle warm gradient for coziness */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.08), transparent 25%), 
+    radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.08), transparent 25%);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar (Round & Soft) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 2px solid var(--bg); /* Use background color for border to simulate transparency */
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Hide main scrollbar when requested */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.glass {
+  background: color-mix(in srgb, var(--bg-surface), transparent 35%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy spring transition */
+}
+
+/* Hide scrollbar for horizontal scrolling areas */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+

@@ -1,0 +1,136 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Document ID: userId (uid)
+    // Fields:
+    //   - uid: string (required)
+    //   - email: string (required)
+    //   - username: string (required)
+    //   - photoURL: string (required)
+    //   - createdAt: timestamp (required)
+    //
+    // Collection: threads
+    // Document ID: auto-generated
+    // Fields:
+    //   - title: string (required)
+    //   - content: string (required)
+    //   - authorId: string (required)
+    //   - authorName: string (required)
+    //   - authorPhoto: string (optional)
+    //   - gameTitle: string (required)
+    //   - tags: list (optional)
+    //   - createdAt: timestamp (required)
+    //   - likes: list (optional)
+    //
+    // Collection: messages
+    // Document ID: auto-generated
+    // Fields:
+    //   - text: string (required)
+    //   - userId: string (required)
+    //   - userName: string (required)
+    //   - userPhoto: string (optional)
+    //   - createdAt: timestamp (required)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email', 'username', 'photoURL', 'createdAt']) &&
+             data.uid is string &&
+             data.email is string &&
+             data.username is string && data.username.size() > 0 && data.username.size() < 50 &&
+             data.photoURL is string &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidThread(data) {
+      return data.keys().hasAll(['title', 'content', 'authorId', 'authorName', 'gameTitle', 'createdAt']) &&
+             data.title is string && data.title.size() > 0 && data.title.size() < 200 &&
+             data.content is string && data.content.size() > 0 && data.content.size() < 5000 &&
+             data.authorId is string &&
+             data.authorName is string &&
+             data.gameTitle is string &&
+             data.createdAt is timestamp &&
+             (!('authorPhoto' in data) || data.authorPhoto is string) &&
+             (!('tags' in data) || data.tags is list) &&
+             (!('likes' in data) || data.likes is list) &&
+             (!('images' in data) || data.images is list);
+    }
+
+    function isValidMessage(data) {
+      return data.keys().hasAll(['text', 'userId', 'userName', 'gameTitle', 'createdAt']) &&
+             data.text is string && data.text.size() >= 0 && data.text.size() < 1000 &&
+             data.userId is string &&
+             data.userName is string &&
+             data.gameTitle is string &&
+             data.createdAt is timestamp &&
+             (!('userPhoto' in data) || data.userPhoto is string) &&
+             (!('image' in data) || data.image is string);
+    }
+
+    function isValidComment(data) {
+      return data.keys().hasAll(['text', 'userId', 'userName', 'createdAt']) &&
+             data.text is string && data.text.size() >= 0 && data.text.size() < 1000 &&
+             data.userId is string &&
+             data.userName is string &&
+             data.createdAt is timestamp &&
+             (!('userPhoto' in data) || data.userPhoto is string) &&
+             (!('image' in data) || data.image is string);
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isOwner(userId) && isValidUser(request.resource.data);
+      allow update: if isOwner(userId) && isValidUser(request.resource.data) && 
+                      request.resource.data.uid == resource.data.uid &&
+                      request.resource.data.email == resource.data.email &&
+                      request.resource.data.createdAt == resource.data.createdAt;
+    }
+
+    match /threads/{threadId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && isValidThread(request.resource.data) && request.resource.data.authorId == request.auth.uid;
+      allow update: if isAuthenticated() && (
+        // Author can update their own thread
+        (isOwner(resource.data.authorId) && isValidThread(request.resource.data) && 
+         request.resource.data.authorId == resource.data.authorId &&
+         request.resource.data.createdAt == resource.data.createdAt) ||
+        // Others can only update likes
+        (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes']))
+      );
+      allow delete: if isOwner(resource.data.authorId);
+
+      match /comments/{commentId} {
+        allow read: if isAuthenticated();
+        allow create: if isAuthenticated() && isValidComment(request.resource.data) && request.resource.data.userId == request.auth.uid;
+        allow update, delete: if isOwner(resource.data.userId);
+      }
+    }
+
+    match /messages/{messageId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && isValidMessage(request.resource.data) && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isOwner(resource.data.userId);
+    }
+  }
+}

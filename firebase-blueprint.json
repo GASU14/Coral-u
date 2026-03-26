@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "username": { "type": "string" },
+        "photoURL": { "type": "string", "format": "uri" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "username", "photoURL", "createdAt"]
+    },
+    "Thread": {
+      "title": "Thread",
+      "description": "A social feed thread",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorPhoto": { "type": "string", "format": "uri" },
+        "gameTitle": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "likes": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["title", "content", "authorId", "authorName", "gameTitle", "createdAt"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "A chat message",
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhoto": { "type": "string", "format": "uri" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["text", "userId", "userName", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "threads/{threadId}": {
+      "schema": "Thread",
+      "description": "Social feed threads"
+    },
+    "messages/{messageId}": {
+      "schema": "Message",
+      "description": "Global chat messages"
+    }
+  }
+}

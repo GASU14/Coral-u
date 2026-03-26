@@ -1,0 +1,1553 @@
+[
+  {
+    "Title": "Pokemon Emerald",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonemerald/pokemonemerald-sq-1644346782465.webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonemerald/index.html",
+    "Categories": [
+      "Emulation",
+      "GBA",
+      "Adventure",
+      "RPG"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Bendy and The Ink Machine",
+    "Icon": "https://theorytest.help/images/gx/bendy.png",
+    "IFrame": "https://theorytest.help/filesgx/Bendy%20and%20the%20Ink%20Machine.html",
+    "Categories": [
+      "Horror",
+      "Adventure",
+      "Puzzle"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Buckshot Roulette",
+    "Icon": "https://theorytest.help/images/gx/buckshot.png",
+    "IFrame": "https://theorytest.help/filesgx/Buckshot Roulette.html",
+    "Categories": [
+      "Horror",
+      "Strategy",
+      "Indie"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Crossy Road",
+    "Icon": "https://crossy-road.io/cache/data/image/game/crossy-road-game-1-m190x185.webp",
+    "IFrame": "https://azgames.io/game/crossy-road/",
+    "Categories": [
+      "Arcade",
+      "Endless Runner"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Cuphead",
+    "Icon": "https://upload.wikimedia.org/wikipedia/en/e/eb/Cuphead_%28artwork%29.png",
+    "IFrame": "https://html-classic.itch.zone/html/14775576/cuphead/index.html",
+    "Categories": [
+      "Action",
+      "Platformer",
+      "Boss Rush"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Deltarune",
+    "Icon": "https://theorytest.help/images/gx/deltarune.png",
+    "IFrame": "https://theorytest.help/filesgx/deltarune/deltaruneindex.html",
+    "Categories": [
+      "RPG",
+      "Adventure",
+      "Bullet Hell"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Freddy's 1",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf/splash.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf/index.html",
+    "Categories": [
+      "Horror",
+      "Strategy",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Freddy's 2",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf2/project/splash.webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf2/index.html",
+    "Categories": [
+      "Horror",
+      "Strategy",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Freddy's 3",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf3/project/splash.webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf3/index.html",
+    "Categories": [
+      "Horror",
+      "Strategy"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Freddy's 4",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf4/project/splash.webp",
+    "IFrame": "https://irv77.github.io/hd_fnaf/4/",
+    "Categories": [
+      "Horror",
+      "Strategy",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Freddy's World",
+    "Icon": "https://theorytest.help/images/gx/fnafworld.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/fnafworld/index.html",
+    "Categories": [
+      "RPG",
+      "Adventure"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Friday Night Funkin",
+    "Icon": "https://img.utdstc.com/icon/807/216/8072161110b1f6a2990a4baeb55eaaeab761fc199d9c001c7b6623f4cf8c6eb7:200",
+    "IFrame": "https://theorytest.help/filesgx/Friday Night Funkin.html",
+    "Categories": [
+      "Rhythm",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Frontwars.io",
+    "Icon": "https://frontwars.org/img/frontwars-cover.jpg",
+    "IFrame": "https://frontwars.io/",
+    "Categories": [
+      "Strategy",
+      "Multiplayer"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Happy Wheels",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/happywheels/Untitled.jpeg",
+    "IFrame": "https://jaydengass.github.io/happy-wheels-oasis/",
+    "Categories": [
+      "Action",
+      "Physics",
+      "Racing"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Hollow Knight",
+    "Icon": "https://assets-prd.ignimgs.com/2021/12/07/hollowknight-1638908888257.png?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80",
+    "IFrame": "https://2games.io/game/hollow-knight/",
+    "Categories": [
+      "Action",
+      "Adventure",
+      "Metroidvania"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Kindergarten",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/kindergarten1/logo.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/kindergarten1/index.html",
+    "Categories": [
+      "Adventure",
+      "Puzzle",
+      "Strategy"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "People Playground",
+    "Icon": "https://theorytest.help/images/gx/pplpg.png",
+    "IFrame": "https://html-classic.itch.zone/html/14803006/ppg/index.html",
+    "Categories": [
+      "Sandbox",
+      "Simulation",
+      "Physics"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Pizza Tower",
+    "Icon": "https://theorytest.help/images/gx/pizzatower.png",
+    "IFrame": "https://html-classic.itch.zone/html/12484313/PT_WebBuild_CoopMod/index.html",
+    "Categories": [
+      "Action",
+      "Platformer"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Freddy's: Pizza Simulator",
+    "Icon": "https://theorytest.help/images/gx/FNAFPS.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf-ps/index.html",
+    "Categories": [
+      "Horror",
+      "Strategy",
+      "Simulation"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Five Nights at Freddy's: Sister Location",
+    "Icon": "https://assetsio.gnwcdn.com/five_nights_at_freddys_sister_location_S8iIDv3.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf-sl/index.html",
+    "Categories": [
+      "Horror",
+      "Survival",
+      "Puzzle"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "ULTRAKILL",
+    "Icon": "https://thumbnails.gamenora.com/ULTRAKILL%20Prelude.webp",
+    "IFrame": "https://www.gamenora.com/embed/ultrakill-prelude/",
+    "Categories": [
+      "Action",
+      "FPS",
+      "Shooter"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Five Nights at Freddy's: Ultimate Custom Night",
+    "Icon": "https://theorytest.help/images/gx/UCN.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf-ucn/index.html",
+    "Categories": [
+      "Horror",
+      "Strategy",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Undertale",
+    "Icon": "https://theorytest.help/images/gx/undertale.png",
+    "IFrame": "https://theorytest.help/filesgx/undertale.html",
+    "Categories": [
+      "RPG",
+      "Adventure",
+      "Bullet Hell"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Undertale Yellow",
+    "Icon": "https://theorytest.help/images/gx/undertaleyellow.png",
+    "IFrame": "https://theorytest.help/filesgx/Undertale Yellow.html",
+    "Categories": [
+      "RPG",
+      "Adventure",
+      "Bullet Hell"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "BTD5",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/btd5/wogo.png",
+    "IFrame": "https://jaydengass.github.io/baloons-td-5---oasis/",
+    "Categories": [
+      "Strategy",
+      "Tower Defense"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Bitlife",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/bitlife/bitlife.png",
+    "IFrame": "https://theorytest.help/filesgx/BitLife.html",
+    "Categories": [
+      "Simulation",
+      "Sandbox"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Balatro",
+    "Icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkFsHqUwqGJYfMBUmuYPyX7cnQWZW2vuHVdw1xwMi3ak_b8SlL",
+    "IFrame": "https://dmectexas.org/assets/storage/webgl/balatro/",
+    "Categories": [
+      "Strategy",
+      "Roguelike",
+      "Cards"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Half Life",
+    "Icon": "https://cdn.cloudflare.steamstatic.com/half-life.com/images/halflife/halflife_coverart.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/halflife/index.html",
+    "Categories": [
+      "Action",
+      "FPS",
+      "Sci-Fi",
+      "Horror"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "2048",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/2048/icon.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/2048/index.html",
+    "Categories": [
+      "Puzzle",
+      "Strategy"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "10 Minutes Till Dawn",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/10minutestilldawn/splash.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/10minutestilldawn/index.html",
+    "Categories": [
+      "Action",
+      "Roguelike",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Adventure Capitalist",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/adventure-capitalist/logo.webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/adventure-capitalist/index.html",
+    "Categories": [
+      "Strategy",
+      "Tycoon",
+      "Idle"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Baldi's Basics",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/baldis-basics/splash.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/baldis-basics/index.html",
+    "Categories": [
+      "Horror",
+      "Strategy",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Raft",
+    "Icon": "https://images.steamusercontent.com/ugc/1833541252454295286/49586C84366C361A585FA8CBAD7608DC67D71C97/?imw=128&imh=128&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/loader.html?title=Raft&dir=raft&img=logo.jpg&type=g",
+    "Categories": [
+      "Survival",
+      "Open World",
+      "Crafting"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Clicker Heroes",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/clickerheroes/clicker-heroes.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/clickerheroes/index.html",
+    "Categories": [
+      "Idle",
+      "Clicker"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Cookie Clicker",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/cookieclicker/img/perfectCookie.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/cookieclicker/index.html",
+    "Categories": [
+      "Idle",
+      "Clicker"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Drift Hunters",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/drifthunters/icon.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/drifthunters/index.html",
+    "Categories": [
+      "Racing",
+      "Drifting",
+      "Vehicle"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Drift Boss",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/drift-boss/icon.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/drift-boss/index.html",
+    "Categories": [
+      "Arcade",
+      "Vehicle"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Space Waves",
+    "Icon": "https://thaka.bing.com/th?id=OCGE.9nm5764dbppg_v9_main_webp&w=128&h=128&qlt=80&c=0&rs=1",
+    "IFrame": "https://crazygames.cdn.msnfun.com/9nm5764dbppg/v8/index.html?msstart_sdk_init=eyJwYXJlbnRPcmlnaW4iOiJodHRwczovL3d3dy5tc24uY29tIiwiY2xpZW50SWQiOiIxQjlDNzE5Q0VGMDU2MDVEMDE3QzY3NjVFRTIwNjFGOCIsImxvY2FsZSI6ImVuLXVzIiwiZW50cnlQb2ludElkIjoiaHBtc24iLCJzd2l0Y2hHYW1lUGF5bG9hZCI6eyJzd2l0Y2hlZFRvIjoiOW5tNTc2NGRicHBnIiwidmFsdWUiOnt9fX0",
+    "Categories": [
+      "Rhythm",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Bloxd.io",
+    "Icon": "https://play-lh.googleusercontent.com/sv8XG2T7qWI6yuxJSYgtOq1coV5pTXs474IS_W6GqJ5Rn0nF5w6NV7-kvlMThKb5nXk8=w240-h480-rw",
+    "IFrame": "https://bloxd.io/",
+    "Categories": [
+      "Sandbox",
+      "Multiplayer",
+      "Survival"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Krunker",
+    "Icon": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR2aBfD786ZMr8Uj1ZncVmdxhZsKq0hddKQnUosXL5toqC2Yhad",
+    "IFrame": "https://krunker.io/?game=DAL:m4prg",
+    "Categories": [
+      "FPS",
+      "Shooter",
+      "Multiplayer"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "DEADSHOT.io",
+    "Icon": "https://deadshot.io/promo/thumbnail.png",
+    "IFrame": "https://deadshot.io/",
+    "Categories": [
+      "FPS",
+      "Shooter"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Moto X3M",
+    "Icon": "https://thaka.bing.com/th?id=OCGE.9pfc45g1xhp7_abtesting_557ade05-e732-49c0-8426-4bf9f5c79bc5_webp&w=128&h=128&qlt=80&c=0&rs=1",
+    "IFrame": "https://motox3m.gitlab.io/x3m-1.20.1p/",
+    "Categories": [
+      "Racing",
+      "Physics",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Basketball Stars",
+    "Icon": "https://thaka.bing.com/th?id=OCGE.9mvs56r5bjwj_v3_main_webp&w=128&h=128&qlt=80&c=0&rs=1",
+    "IFrame": "https://tinyurl.com/5n7yzvyd",
+    "Categories": [
+      "Sports",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Pokémon FireRed",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonfirered/pokemonfirered.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonfirered/index.html",
+    "Categories": [
+      "Emulation",
+      "GBA",
+      "RPG",
+      "Adventure"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Block Blast",
+    "Icon": "https://imgs.crazygames.com/block-puzzle-master_1x1/20250924025352/block-puzzle-master_1x1-cover?format=auto&quality=70&metadata=none",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/blockblast/index.html",
+    "Categories": [
+      "Puzzle",
+      "Strategy"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Freddy's 4: Halloween",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf4-halloween/logo.avif",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/fnaf4-halloween/index.html",
+    "Categories": [
+      "Horror",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Geometry Dash Lite",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/gdlite/logo.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/gdlite/index.html",
+    "Categories": [
+      "Rhythm",
+      "Platformer"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Granny",
+    "Icon": "https://www5.minijuegosgratis.com/v3/games/thumbnails/229316_7_sq.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/granny1/index.html",
+    "Categories": [
+      "Horror",
+      "Stealth",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Kindergarten 2",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/kindergarten2/logo.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/kindergarten2/index.html",
+    "Categories": [
+      "Puzzle",
+      "Adventure"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Kindergarten 3",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/kindergarten3/logo.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/kindergarten3/index.html",
+    "Categories": [
+      "Puzzle",
+      "Adventure"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Knife Hit",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/knifehit/icon.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/knifehit/index.html",
+    "Categories": [
+      "Arcade",
+      "Strategy"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Jetpack Joyride",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/jetpackjoyride/logo.jpeg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/jetpackjoyride/index.html",
+    "Categories": [
+      "Arcade",
+      "Endless Runner"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Retro Bowl",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/retrobowl/img/icon.jpg",
+    "IFrame": "https://freegamesunblocked76.github.io/retro-bowl/",
+    "Categories": [
+      "Sports",
+      "Strategy"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Hole.io",
+    "Icon": "https://upload.wikimedia.org/wikipedia/en/c/ca/Hole.io_logo.jpg",
+    "IFrame": "https://holeio.com/",
+    "Categories": [
+      "Arcade",
+      "Battle Royale",
+      "Action"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Retro Bowl College",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/retrobowlcollege/unnamed.png",
+    "IFrame": "https://retrobowl26.college/game/rb-college/",
+    "Categories": [
+      "Sports",
+      "Strategy"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Poker Vegas Casino",
+    "Icon": "https://thaka.bing.com/th?id=OCGE.9mtzb872nxl6_v7_main_webp&w=128&h=128&qlt=80&c=0&rs=1",
+    "IFrame": "https://tinyurl.com/2t72thsy",
+    "Categories": [
+      "Cards",
+      "Casino"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Solar Smash",
+    "Icon": "https://www5.minijuegosgratis.com/v3/games/thumbnails/239670_7_sq.jpg",
+    "IFrame": "https://genizymath.github.io/iframe/118.html",
+    "Categories": [
+      "Simulation",
+      "Sandbox"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Fruit Ninja",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/fruitninja/FruitNinjaTeaser.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/fruitninja/index.html",
+    "Categories": [
+      "Action",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Football Bros",
+    "Icon": "https://bluewizard.com/wp-content/uploads/2024/09/footballBros_600x800_keyart.png",
+    "IFrame": "https://footballbros.io/",
+    "Categories": [
+      "Sports",
+      "Action"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Baseball Bros",
+    "Icon": "https://bluewizard.com/wp-content/uploads/2025/06/image_480.png",
+    "IFrame": "https://baseballbros.io/",
+    "Categories": [
+      "Sports",
+      "Action"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Basket Bros",
+    "Icon": "https://bluewizard.com/wp-content/uploads/2020/05/Basket-Bros-225x300.jpg",
+    "IFrame": "https://basketbros.io/?utm_source=bluewizard&utm_medium=referral",
+    "Categories": [
+      "Sports",
+      "Action"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Kart Bros",
+    "Icon": "https://bluewizard.com/wp-content/uploads/2025/06/kartbros_600x800-400x533.jpg",
+    "IFrame": "https://kartbros.io/?utm_source=bluewizard&utm_medium=referral&utm_campaign=boxart",
+    "Categories": [
+      "Sports",
+      "Racing"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Wrestle Bros",
+    "Icon": "https://bluewizard.com/wp-content/uploads/2023/05/wrestleBros_600x800_keyart-400x533.png",
+    "IFrame": "https://wrestlebros.io/?utm_source=bluewizard&utm_medium=referral",
+    "Categories": [
+      "Sports",
+      "Action"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Soccer Bros",
+    "Icon": "https://bluewizard.com/wp-content/uploads/2023/12/soccerBros_boxart.jpg",
+    "IFrame": "https://soccerbros.gg/?utm_source=bluewizard&utm_medium=referral",
+    "Categories": [
+      "Sports",
+      "Action"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Karate Bros",
+    "Icon": "https://bluewizard.com/wp-content/uploads/2025/03/karatebros_boxart-400x533.png",
+    "IFrame": "https://karatebros.io/?utm_source=bluewizard&utm_medium=referral&utm_campaign=boxart",
+    "Categories": [
+      "Fighting",
+      "Action"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Pokemon Yellow",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonyellow/pokemon-yellow---button-1558057648010.webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonyellow/index.html",
+    "Categories": [
+      "Emulation",
+      "GBC",
+      "RPG",
+      "Adventure"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Pokemon Crystal",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemoncrystal/pokemoncrystal-1639519080473.webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemoncrystal/index.html",
+    "Categories": [
+      "Emulation",
+      "GBC",
+      "RPG",
+      "Adventure"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Pokemon Platinum",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonplatinum/pokemonplatinum.jpeg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonplatinum/index.html",
+    "Categories": [
+      "Emulation",
+      "NDS",
+      "RPG",
+      "Adventure"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Pokemon Soul Silver",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonsoulsilver/pokemon-soulsilver-version_cmaq.600.webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonsoulsilver/index.html",
+    "Categories": [
+      "Emulation",
+      "NDS",
+      "RPG",
+      "Adventure"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Pokemon Stadium",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonstadium/pokemonstadium.jpeg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonstadium/index.html",
+    "Categories": [
+      "Emulation",
+      "N64",
+      "Fighting",
+      "Strategy"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "pokemon Snap",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonsnap/pokemonsnap.jpeg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonsnap/index.html",
+    "Categories": [
+      "Emulation",
+      "N64",
+      "Simulation",
+      "Adventure"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Pokemon Mystery Dungeon",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonmysterydungeon/pokemonmysterydungeon.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonmysterydungeon/index.html",
+    "Categories": [
+      "Emulation",
+      "GBA",
+      "RPG",
+      "Dungeon Crawler"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Pokemon Unbound",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonunbound/pokemon-unbound.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pokemonunbound/index.html",
+    "Categories": [
+      "Emulation",
+      "GBA",
+      "RPG",
+      "Adventure"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "GTA: Vice City",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/gtavc/256x256.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/gtavc/index.html",
+    "Categories": [
+      "Action",
+      "Adventure",
+      "Open World"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "That's Not My Neighbor",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/thats-not-my-neighbor/thats-not-my-neighbor.icon.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/thats-not-my-neighbor/index.html",
+    "Categories": [
+      "Horror",
+      "Puzzle",
+      "Indie",
+      "Simulation"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Little Alchemy",
+    "Icon": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQwzyY3q_ykYXcf0G8nomfmybkcC_9gTRXi2DRz8iMMJhNJISkC",
+    "IFrame": "https://littlealchemy.com/",
+    "Categories": [
+      "Puzzle",
+      "Strategy",
+      "Simulation"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Little Alchemy 2",
+    "Icon": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQwzyY3q_ykYXcf0G8nomfmybkcC_9gTRXi2DRz8iMMJhNJISkC",
+    "IFrame": "https://littlealchemy2.com/",
+    "Categories": [
+      "Puzzle",
+      "Strategy",
+      "Simulation"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Chess",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/chess/icon.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/chess/index.html",
+    "Categories": [
+      "Strategy",
+      "Board Game",
+      "Classic"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Slope",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/slope/slope4.jpeg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/slope/index.html",
+    "Categories": [
+      "Arcade",
+      "Action",
+      "Endless Runner"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Subway Surfers",
+    "Icon": "https://img.itch.zone/aW1nLzI0Mjc4NzkxLmpwZw==/315x250%23c/uyVMjG.jpg",
+    "IFrame": "https://g2.igroutka.ru/games/164/ZXLa594fek6p7nVR/10/subway_surfers_classic/",
+    "Categories": [
+      "Arcade",
+      "Endless Runner"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "1v1.lol",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/1v1lol/splash.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/1v1lol/index.html",
+    "Categories": [
+      "Action",
+      "FPS",
+      "Multiplayer"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Super Mario Bro's",
+    "Icon": "https://m.media-amazon.com/images/I/41E-4SHcOcL._SY445_SX342_QL70_FMwebp_.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/supermariobros/index.html",
+    "Categories": [
+      "Emulation",
+      "NES",
+      "Platformer",
+      "Classic",
+      "Retro"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Super Mario Bro's 2",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/supermariobros2/supermariobros2.jpeg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/supermariobros2/index.html",
+    "Categories": [
+      "Emulation",
+      "NES",
+      "Platformer",
+      "Classic",
+      "Retro"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Super Mario Bro's 3",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/supermariobros3/smb3-1709899677898.webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/supermariobros3/index.html",
+    "Categories": [
+      "Emulation",
+      "NES",
+      "Platformer",
+      "Classic",
+      "Retro"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Doom",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/doom/logo.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/doom/index.html",
+    "Categories": [
+      "Action",
+      "FPS",
+      "Classic"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Omori",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/omori/icon/icon.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/omori/index.html",
+    "Categories": [
+      "RPG",
+      "Horror",
+      "Adventure"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "The Binding of Issac",
+    "Icon": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/113200/header.jpg?t=1643480517",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/tboi/index.html",
+    "Categories": [
+      "Roguelike",
+      "Action",
+      "Dungeon Crawler"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Doom 2",
+    "Icon": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/12/mixcollage-11-dec-2024-07-17-pm-2087.jpg?q=50&fit=crop&w=480&h=600&dpr=1.5",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/doom2/index.html",
+    "Categories": [
+      "Action",
+      "FPS",
+      "Classic"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Paper Mario",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/papermario/papermario.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/papermario/index.html",
+    "Categories": [
+      "Emulation",
+      "N64",
+      "RPG",
+      "Adventure"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Super Mario 64",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/supermario64/icon.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/supermario64/index.html",
+    "Categories": [
+      "Emulation",
+      "N64",
+      "Platformer",
+      "Adventure"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Doom 64",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/doom64/doom64.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/doom64/index.html",
+    "Categories": [
+      "Emulation",
+      "N64",
+      "Action",
+      "FPS"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Mario Kart 64",
+    "Icon": "https://upload.wikimedia.org/wikipedia/en/a/a1/Mario_Kart_64.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/mariokart64/index.html",
+    "Categories": [
+      "Emulation",
+      "N64",
+      "Racing"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Mario Kart DS",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/mariokartds/mariokartds.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/mariokartds/index.html",
+    "Categories": [
+      "Emulation",
+      "NDS",
+      "Racing"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Super Mario Kart",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/supermariokart/logo.avif",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/supermariokart/index.html",
+    "Categories": [
+      "Emulation",
+      "Racing",
+      "Classic"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Jelly Mario",
+    "Icon": "https://peachscastle.com/wp-content/uploads/2018/03/jelly-mario-game.png",
+    "IFrame": "https://jellymar.io/",
+    "Categories": [
+      "Physics",
+      "Parody",
+      "Platformer"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Monopoly DS",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/monopoly/monopoly.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/monopoly/index.html",
+    "Categories": [
+      "Emulation",
+      "NDS",
+      "Board Game"
+    ],
+    "badge": "Heavy"
+  },
+  {
+    "Title": "Slime Rancher",
+    "Icon": "https://upload.wikimedia.org/wikipedia/en/d/d2/Slime_Rancher_cover_art.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/jellyrancher/index.html",
+    "Categories": [
+      "Simulation",
+      "Adventure",
+      "Sandbox"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Sonic",
+    "Icon": "https://upload.wikimedia.org/wikipedia/en/b/ba/Sonic_the_Hedgehog_1_Genesis_box_art.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/sonic/index.html",
+    "Categories": [
+      "Emulation",
+      "GEN",
+      "Platformer",
+      "Classic",
+      "Retro"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Sonic 2",
+    "Icon": "https://upload.wikimedia.org/wikipedia/en/0/0c/Sonic_2_US_Cover.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/2sonic/index.html",
+    "Categories": [
+      "Emulation",
+      "GEN",
+      "Platformer",
+      "Classic",
+      "Retro"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Sonic 3",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/3sonic/cover.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/3sonic/index.html",
+    "Categories": [
+      "Emulation",
+      "GEN",
+      "Platformer",
+      "Classic",
+      "Retro"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Epstein’s",
+    "Icon": "https://topgames.gg/cache/data/image/game/five-nights-at-epsteins/five-nights-at-epsteins-m230x230.webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/fnae/index.html",
+    "Categories": [
+      "Horror",
+      "Survival",
+      "Funny"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Minecraft",
+    "Icon": "https://www.coolkidfacts.com/wp-content/uploads/2022/12/Minecraft-Facts-for-Kids.png",
+    "IFrame": "https://eaglercraft1-8.github.io/",
+    "Categories": [
+      "Sandbox",
+      "Open World",
+      "Survival",
+      "Multiplayer"
+    ],
+    "badge": "Medium"
+  },
+  {
+    "Title": "Solitaire",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/solitaire/cover.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/solitaire/index.html",
+    "Categories": [
+      "Cards",
+      "Classic",
+      "Puzzle"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Punch The Trump",
+    "Icon": "https://www4.minijuegosgratis.com/v3/games/thumbnails/213893_7_sq.jpg",
+    "IFrame": "https://tinyurl.com/carf5488",
+    "Categories": [
+      "Action",
+      "Arcade",
+      "Funny"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Plants vs. Zombies",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pvz/cover.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pvz/index.html",
+    "Categories": [
+      "Strategy",
+      "Tower Defense",
+      "Classic"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Plants vs. Zombies 2: Gardenless",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/pvzge/pvz.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/pvzge/index.html",
+    "Categories": [
+      "Strategy",
+      "Tower Defense",
+      "Mod"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Iron Lung",
+    "Icon": "https://sm.ign.com/t/ign_es/cover/i/iron-lung/iron-lung_gxub.600.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/iron-lung/index.html",
+    "Categories": [
+      "Horror",
+      "Simulation",
+      "Indie",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Celeste",
+    "Icon": "https://i.pinimg.com/736x/74/ae/73/74ae730e4c5f3d67cc467aa5591e3f8e.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/celestefull/index.html",
+    "Categories": [
+      "Platformer",
+      "Indie",
+      "Adventure"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Flappy Bird",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/flappybird/icon.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/flappybird/index.html",
+    "Categories": [
+      "Arcade",
+      "Casual"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Hazmod",
+    "Icon": "https://play-lh.googleusercontent.com/w0VwOXBbXTWNQRskk-L8zlqFuW-pJ0HLlBJFSTtSaSDKTrCtekD9rSiEQtBFlXFFXFA=w240-h480-rw",
+    "IFrame": "https://tinyurl.com/58s2uztt",
+    "Categories": [
+      "Action",
+      "Shooter"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Fragen",
+    "Icon": "https://cdn.aptoide.com/imgs/8/2/b/82bf417d342df7ffc0df4c5ce6a150aa_icon.png?w=128",
+    "IFrame": "https://tinyurl.com/33jxua7u",
+    "Categories": [
+      "Action",
+      "Shooter"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Black Jack",
+    "Icon": "https://playpager.com/images/1x1/blackjack-1x1.avif",
+    "IFrame": "https://playpager.com/app-games/en/blackjack/",
+    "Categories": [
+      "Cards",
+      "Casino",
+      "Strategy"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Billards",
+    "Icon": "https://tinyurl.com/39x5twc4",
+    "IFrame": "https://tinyurl.com/3xy5fzcw",
+    "Categories": [
+      "Puzzle",
+      "Strategy"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "WorldGuessr",
+    "Icon": "https://worldguessr.co.uk/wp-content/uploads/2025/11/worldguessr-150x150.webp",
+    "IFrame": "https://www.worldguessr.com/",
+    "Categories": [
+      "Quiz",
+      "Geography",
+      "Casual"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Uno",
+    "Icon": "https://unonline.io/uno-online.webp",
+    "IFrame": "https://unonline.io/play/uno-online/",
+    "Categories": [
+      "Cards",
+      "Casual",
+      "Multiplayer"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "SandBoxels",
+    "Icon": "https://tinyurl.com/mw8328hj",
+    "IFrame": "https://rockisdirt.github.io/",
+    "Categories": [
+      "Sandbox",
+      "Simulation",
+      "Physics"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Angry Birds",
+    "Icon": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Angry_Birds_promo_art.png/250px-Angry_Birds_promo_art.png",
+    "IFrame": "https://genizymath.github.io/iframe/63.html",
+    "Categories": [
+      "Puzzle",
+      "Physics",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Escape Road",
+    "Icon": "https://poorbunny2.io/cache/data/image/game/escaperoad-h180x180.webp",
+    "IFrame": "https://genizymath.github.io/iframe/264.html",
+    "Categories": [
+      "Action",
+      "Racing",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Hotline Miami",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/217.png",
+    "IFrame": "https://genizymath.github.io/iframe/217-c.html",
+    "Categories": [
+      "Action",
+      "Shooter",
+      "Indie"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Brotato",
+    "Icon": "https://www.gematsu.com/wp-content/uploads/2023/04/Game-Page-Featured_Brotato-Inits.jpg",
+    "IFrame": "https://genizymath.github.io/iframe/723.html",
+    "Categories": [
+      "Action",
+      "Roguelike",
+      "Shooter"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Dumb Ways to Die",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/738.png",
+    "IFrame": "https://genizymath.github.io/iframe/738.html",
+    "Categories": [
+      "Arcade",
+      "Funny",
+      "Casual"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Granny 2",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/125.png",
+    "IFrame": "https://genizymath.github.io/iframe/125.html",
+    "Categories": [
+      "Horror",
+      "Stealth",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Granny 3",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/126.png",
+    "IFrame": "https://genizymath.github.io/iframe/126.html",
+    "Categories": [
+      "Horror",
+      "Stealth",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "A Bite at Freddy's",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/258.png",
+    "IFrame": "https://genizymath.github.io/iframe/258.html",
+    "Categories": [
+      "Horror",
+      "Strategy",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Freddy's World: Refreshed",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/704.png",
+    "IFrame": "https://genizymath.github.io/iframe/704-fix.html",
+    "Categories": [
+      "RPG",
+      "Adventure"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "karlson",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/542.png",
+    "IFrame": "https://genizymath.github.io/iframe/542-a.html",
+    "Categories": [
+      "Action",
+      "FPS",
+      "Platformer"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Smash Karts",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/370.png",
+    "IFrame": "https://genizymath.github.io/iframe/370-f.html",
+    "Categories": [
+      "Racing",
+      "Action",
+      "Multiplayer"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Cut the Rope",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/85.png",
+    "IFrame": "https://genizymath.github.io/iframe/212-f.html",
+    "Categories": [
+      "Puzzle",
+      "Physics",
+      "Casual"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Cut the Rope: Holiday Gift",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/214.png",
+    "IFrame": "https://genizymath.github.io/iframe/214-fi.html",
+    "Categories": [
+      "Puzzle",
+      "Physics",
+      "Casual"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Cut the Rope: Time Travel",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/213.png",
+    "IFrame": "https://genizymath.github.io/iframe/213-f.html",
+    "Categories": [
+      "Puzzle",
+      "Physics",
+      "Casual"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Candy's",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/503.png",
+    "IFrame": "https://genizymath.github.io/iframe/503.html",
+    "Categories": [
+      "Horror",
+      "Strategy",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Five Nights at Candy's 2",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/504.png",
+    "IFrame": "https://genizymath.github.io/iframe/504.html",
+    "Categories": [
+      "Horror",
+      "Strategy",
+      "Survival"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Moto X3M 2",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/97.png",
+    "IFrame": "https://genizymath.github.io/iframe/97.html",
+    "Categories": [
+      "Racing",
+      "Physics",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Moto X3M 3",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/98.png",
+    "IFrame": "https://genizymath.github.io/iframe/98.html",
+    "Categories": [
+      "Racing",
+      "Physics",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Moto X3M Pool Party",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/124.png",
+    "IFrame": "https://genizymath.github.io/iframe/124.html",
+    "Categories": [
+      "Racing",
+      "Physics",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Moto X3M Spooky",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/99.png",
+    "IFrame": "https://genizymath.github.io/iframe/99.html",
+    "Categories": [
+      "Racing",
+      "Physics",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Moto X3M Winter",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/100.png",
+    "IFrame": "https://genizymath.github.io/iframe/100-f.html",
+    "Categories": [
+      "Racing",
+      "Physics",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Bowmasters",
+    "Icon": "https://cdn.jsdelivr.net/gh/gn-math/covers@main/0.png",
+    "IFrame": "https://genizymath.github.io/iframe/0.html",
+    "Categories": [
+      "Action",
+      "Funny",
+      "Strategy"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Basket Random",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/basketrandom/test.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/basketrandom/index.html",
+    "Categories": [
+      "Sports",
+      "Funny",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Boxing Random",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/boxingrandom/512x512.jpg",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/boxingrandom/index.html",
+    "Categories": [
+      "Sports",
+      "Funny",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Soccer Random",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/soccerrandom/test.png",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/soccerrandom/index.html",
+    "Categories": [
+      "Sports",
+      "Funny",
+      "Arcade"
+    ],
+    "badge": "Low"
+  },
+  {
+    "Title": "Volley Random",
+    "Icon": "https://tutorials.bostoncareercounselor.com/resources/semag/volleyrandom/cover.webp",
+    "IFrame": "https://tutorials.bostoncareercounselor.com/resources/semag/volleyrandom/index.html",
+    "Categories": [
+      "Sports",
+      "Funny",
+      "Arcade"
+    ],
+    "badge": "Low"
+  }
+]
