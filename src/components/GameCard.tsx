@@ -1,6 +1,6 @@
-import { memo } from 'react';
+import React, { memo } from 'react';
 import { motion } from 'motion/react';
-import { Play } from 'lucide-react';
+import { Play, Heart } from 'lucide-react';
 
 interface Game {
   Title: string;
@@ -13,17 +13,19 @@ interface Game {
 interface GameCardProps {
   game: Game;
   index: number;
-  onSelect: (game: Game) => void;
+  onPlay: (game: Game) => void;
+  isFavorite?: boolean;
+  onToggleFavorite?: (e: React.MouseEvent) => void;
 }
 
-export const GameCard = memo(({ game, index, onSelect }: GameCardProps) => {
+export const GameCard = memo(({ game, index, onPlay, isFavorite, onToggleFavorite }: GameCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, margin: "100px" }}
       transition={{ duration: 0.3, delay: (index % 12) * 0.05 }}
-      onClick={() => onSelect(game)}
+      onClick={() => onPlay(game)}
       className="group cursor-pointer"
       whileHover="hover"
       style={{
@@ -59,6 +61,22 @@ export const GameCard = memo(({ game, index, onSelect }: GameCardProps) => {
             </div>
             <h3 className="text-lg font-bold text-white leading-tight px-4 text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{game.Title}</h3>
           </div>
+
+          {onToggleFavorite && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleFavorite(e);
+              }}
+              className={`absolute top-4 right-4 p-2.5 rounded-2xl backdrop-blur-md transition-all z-20 ${
+                isFavorite 
+                  ? 'bg-red-500 text-white shadow-lg shadow-red-500/20' 
+                  : 'bg-black/20 text-white/70 hover:bg-black/40 hover:text-white opacity-0 group-hover:opacity-100'
+              }`}
+            >
+              <Heart className={`w-4 h-4 ${isFavorite ? 'fill-current' : ''}`} />
+            </button>
+          )}
         </motion.div>
       </div>
       <h3 className="text-sm font-semibold text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors px-1">

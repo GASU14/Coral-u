@@ -4,13 +4,18 @@ import {
   Search, X, Play, Gamepad2, Shuffle, ArrowUp, Trophy, 
   RotateCcw, Maximize, Menu, Settings, History, Layout, 
   ChevronRight, Sparkles, Home, Grid, Info, ChevronLeft,
-  Lock, Filter, MousePointer2, Layers, RefreshCw, Pause, User, Users, MessageSquare, ExternalLink, ShieldCheck
+  Lock, Filter, MousePointer2, Layers, RefreshCw, Pause, User, Users, MessageSquare, ExternalLink, ShieldCheck, Heart
 } from 'lucide-react';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth } from './firebase';
+import { doc, onSnapshot, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
+import { auth, db } from './firebase';
 import gamesData from '../game.json';
 import { GameCard } from './components/GameCard';
 import Calculator from './components/Calculator';
+import { Header } from './components/Header';
+import { Sidebar } from './components/Sidebar';
+import { FeaturedCarousel } from './components/FeaturedCarousel';
+import { GamePlayer } from './components/GamePlayer';
 const SocialFeed = lazy(() => import('./components/SocialFeed'));
 const Auth = lazy(() => import('./components/Auth'));
 const ProfileSettings = lazy(() => import('./components/ProfileSettings'));
@@ -25,6 +30,7 @@ interface Game {
 
 export default function App() {
   const [user, setUser] = useState<any>(null);
+  const [favorites, setFavorites] = useState<string[]>([]);
   const [showProfileSettings, setShowProfileSettings] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(() => {
     return new URLSearchParams(window.location.search).get('unlocked') === 'true';
@@ -60,7 +66,7 @@ export default function App() {
       iframe.style.height = '100%';
       iframe.style.margin = '0';
       iframe.src = url.toString();
-      iframe.allow = "autoplay; fullscreen; keyboard; pointer-lock; gamepad; camera; microphone; geolocation";
+      iframe.allow = "autoplay; fullscreen; pointer-lock; gamepad; camera; microphone; geolocation; xr-spatial-tracking";
       // No sandbox on the main cloaked iframe to be as permissive as possible
       
       body.appendChild(iframe);
@@ -82,6 +88,7 @@ export default function App() {
   const [contextMenu, setContextMenu] = useState<{ x: number, y: number, show: boolean }>({ x: 0, y: 0, show: false });
   const [isPaused, setIsPaused] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isPlayerSidebarCollapsed, setIsPlayerSidebarCollapsed] = useState(false);
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
   // Firebase Auth Listener
@@ -91,6 +98,36 @@ export default function App() {
     });
     return () => unsubscribe();
   }, []);
+
+  // Sync favorites with Firestore
+  useEffect(() => {
+    if (!user) {
+      setFavorites([]);
+      return;
+    }
+    const unsubscribe = onSnapshot(doc(db, 'users', user.uid), (doc) => {
+      if (doc.exists()) {
+        setFavorites(doc.data().favorites || []);
+      }
+    });
+    return () => unsubscribe();
+  }, [user]);
+
+  const toggleFavorite = async (gameTitle: string) => {
+    if (!user) {
+      setShowAuth(true);
+      return;
+    }
+    const isFavorited = favorites.includes(gameTitle);
+    const userRef = doc(db, 'users', user.uid);
+    try {
+      await updateDoc(userRef, {
+        favorites: isFavorited ? arrayRemove(gameTitle) : arrayUnion(gameTitle)
+      });
+    } catch (error) {
+      console.error('Error toggling favorite:', error);
+    }
+  };
 
   // Context Menu listeners
   useEffect(() => {
@@ -320,7 +357,7 @@ export default function App() {
   }, [playerSearchQuery, similarGames, games]);
 
   // Handlers
-  const handleGameSelect = useCallback((game: Game) => {
+  const handlePlay = useCallback((game: Game) => {
     setSelectedGame(game);
     setIsPlayerOpen(true);
     
@@ -340,8 +377,8 @@ export default function App() {
 
   const handleRandomGame = useCallback(() => {
     const randomIdx = Math.floor(Math.random() * games.length);
-    handleGameSelect(games[randomIdx]);
-  }, [games, handleGameSelect]);
+    handlePlay(games[randomIdx]);
+  }, [games, handlePlay]);
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -440,145 +477,19 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <motion.header 
-        layout
-        className={`sticky top-0 z-40 glass px-6 transition-all duration-500 ${isPlayerOpen ? 'opacity-0 pointer-events-none -translate-y-full' : 'opacity-100 translate-y-0'}`}
-      >
-        <motion.div layout className="max-w-7xl mx-auto flex flex-col">
-          <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-6">
-              <motion.div layout className="flex items-center gap-3 group cursor-pointer" onClick={() => window.location.reload()}>
-                <h1 className="text-2xl font-black tracking-tighter text-[var(--accent)]">
-                  CORAL
-                </h1>
-              </motion.div>
-            </div>
-            
-            <div className="flex items-center gap-3">
-               {user ? (
-                 <motion.button 
-                   layout
-                   onClick={() => setShowProfileSettings(true)}
-                   className="p-1.5 rounded-2xl bg-[var(--bg-surface)] hover:bg-[var(--bg-card)] transition-all border border-white/5 overflow-hidden"
-                 >
-                   <div className="w-8 h-8 rounded-xl overflow-hidden bg-[var(--bg-card)]">
-                     {user.photoURL ? (
-                       <img src={user.photoURL} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                     ) : (
-                       <User className="w-full h-full p-2 text-[var(--fg-muted)]" />
-                     )}
-                   </div>
-                 </motion.button>
-               ) : (
-                 <motion.button 
-                   layout
-                   onClick={() => {}} // WIP
-                   className="p-2.5 rounded-2xl bg-[var(--bg-surface)] text-[var(--fg-muted)] cursor-not-allowed transition-all border border-white/5 relative group"
-                 >
-                   <User className="w-5 h-5 opacity-50" />
-                   <div className="absolute -top-1 -right-1 bg-amber-500 text-[8px] font-black px-1 rounded-full text-black">WIP</div>
-                 </motion.button>
-               )}
-
-               {/* Multi-Category Filter Button */}
-               <motion.button 
-                 layout
-                 onClick={() => setIsMultiSelectOpen(!isMultiSelectOpen)}
-                 className={`p-3 rounded-2xl transition-all hover:scale-105 active:scale-95 shadow-sm flex items-center gap-2 ${
-                   selectedCategories.length > 0 ? 'bg-[var(--accent)] text-white' : 'bg-[var(--bg-surface)] text-[var(--fg)]'
-                 }`}
-                 title="Multi-Category Filter"
-               >
-                  <Filter className="w-5 h-5" />
-                  {selectedCategories.length > 0 && <span className="text-xs font-bold">{selectedCategories.length}</span>}
-               </motion.button>
-
-               {/* Search Bar - Desktop */}
-               <motion.div layout className="relative hidden md:block group">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--fg-muted)] group-focus-within:text-[var(--accent)] transition-colors" />
-                  <input 
-                    type="text" 
-                    placeholder="Search games..." 
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="bg-[var(--bg-surface)] border-none rounded-2xl py-2.5 pl-11 pr-4 text-sm focus:ring-2 focus:ring-[var(--accent)] w-64 transition-all placeholder:text-[var(--fg-muted)]/50 text-[var(--fg)]"
-                  />
-               </motion.div>
-               
-               <motion.button 
-                 layout
-                 onClick={() => setIsSideMenuOpen(true)} 
-                 className="p-3 rounded-2xl bg-[var(--bg-surface)] hover:bg-[var(--bg-card)] text-[var(--fg)] transition-all hover:scale-105 active:scale-95 shadow-sm"
-               >
-                  <Menu className="w-5 h-5" />
-               </motion.button>
-            </div>
-          </div>
-
-          {/* Multi-Select Dropdown */}
-          <AnimatePresence>
-            {isMultiSelectOpen && (
-              <motion.div 
-                initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
-                exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="overflow-hidden"
-              >
-                <div className="p-4 bg-[var(--bg-surface)] rounded-3xl shadow-2xl border border-white/5">
-                  <div className="flex flex-wrap gap-2">
-                    {categories.map(cat => (
-                      <button
-                        key={cat}
-                        onClick={() => {
-                          setSelectedCategories(prev => 
-                            prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
-                          );
-                        }}
-                        className={`px-4 py-2 rounded-xl text-xs font-medium transition-all ${
-                          selectedCategories.includes(cat)
-                            ? 'bg-[var(--accent)] text-white shadow-md'
-                            : 'bg-[var(--bg-card)] text-[var(--fg-muted)] hover:text-[var(--fg)]'
-                        }`}
-                      >
-                        {cat}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="mt-4 flex justify-between items-center">
-                    <button 
-                      onClick={() => setSelectedCategories([])}
-                      className="text-xs text-[var(--fg-muted)] hover:text-red-400 transition-colors flex items-center gap-1"
-                    >
-                      <RotateCcw className="w-3 h-3" /> Clear All
-                    </button>
-                    <button 
-                      onClick={() => setIsMultiSelectOpen(false)}
-                      className="px-6 py-2 bg-[var(--accent)] text-white rounded-xl text-xs font-bold shadow-lg shadow-blue-500/20 hover:scale-105 transition-all"
-                    >
-                      Apply Filters
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-          
-          {/* Mobile Search Bar */}
-          <motion.div layout className="md:hidden mt-4 pb-4">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--fg-muted)]" />
-              <input 
-                type="text" 
-                placeholder="Search games..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[var(--bg-surface)] border-none rounded-2xl py-3 pl-11 pr-4 text-sm focus:ring-2 focus:ring-[var(--accent)] transition-all placeholder:text-[var(--fg-muted)]/50 text-[var(--fg)]"
-              />
-            </div>
-          </motion.div>
-        </motion.div>
-      </motion.header>
+      <Header 
+        user={user}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        isPlayerOpen={isPlayerOpen}
+        setShowProfileSettings={setShowProfileSettings}
+        setIsSideMenuOpen={setIsSideMenuOpen}
+        isMultiSelectOpen={isMultiSelectOpen}
+        setIsMultiSelectOpen={setIsMultiSelectOpen}
+        selectedCategories={selectedCategories}
+        setSelectedCategories={setSelectedCategories}
+        categories={categories}
+      />
 
       {/* Tabs UI - Moved under header and rotated */}
       {settings.enableTabs && openGames.length > 0 && !isPlayerOpen && (
@@ -587,7 +498,7 @@ export default function App() {
             {openGames.map((game) => (
               <div
                 key={`tab-${game.Title}`}
-                onClick={() => handleGameSelect(game)}
+                onClick={() => handlePlay(game)}
                 className={`flex items-center gap-3 px-4 py-2 rounded-b-xl transition-all min-w-[120px] max-w-[180px] group relative cursor-pointer border-b border-x ${
                   selectedGame?.Title === game.Title 
                     ? 'bg-[var(--bg-surface)] text-[var(--accent)] border-white/10' 
@@ -614,94 +525,86 @@ export default function App() {
         </div>
       )}
 
-      <main className={`max-w-7xl mx-auto px-6 mt-8 transition-opacity duration-300 ${isPlayerOpen ? 'opacity-0 pointer-events-none h-0 overflow-hidden' : 'opacity-100'}`}>
-         {/* Featured Games Carousel */}
-         {!searchQuery && selectedCategories.length === 0 && !preferenceFilter && (
-           <section className="mb-12">
-             <div className="flex items-center justify-between mb-6">
-               <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                 <Sparkles className="w-5 h-5 text-[var(--accent)]" />
-                 Featured
-               </h2>
-               <div className="text-xs font-mono text-[var(--fg-muted)] bg-[var(--bg-surface)] px-3 py-1 rounded-full">
-                 {timeLeft}
-               </div>
-             </div>
-             
-             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-               {featuredGames.map((game, idx) => (
-                 <motion.div
-                   key={`featured-${game.Title}`}
-                   initial={{ opacity: 0, y: 20 }}
-                   animate={{ opacity: 1, y: 0 }}
-                   transition={{ delay: idx * 0.1 }}
-                   onClick={() => handleGameSelect(game)}
-                   className="group relative aspect-square cursor-pointer transition-all duration-500 hover:-translate-y-2"
-                 >
-                   <div className="absolute inset-0 rounded-[2rem] overflow-hidden shadow-lg group-hover:shadow-2xl group-hover:shadow-[var(--accent)]/20 transition-all duration-500">
-                     <img
-                       src={`${game.Icon}${game.Icon.includes('?') ? '&' : '?'}v=1`}
-                       alt={game.Title}
-                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                       referrerPolicy="no-referrer"
-                     />
-                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center backdrop-blur-[12px] z-10">
-                       <div className="w-12 h-12 bg-[var(--accent)] rounded-full flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300 mb-4">
-                         <Play className="w-5 h-5 text-white fill-white ml-0.5" />
-                       </div>
-                     </div>
-                     <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/80 to-transparent group-hover:opacity-0 transition-opacity duration-300">
-                       <h3 className="text-lg font-bold text-white leading-tight">{game.Title}</h3>
-                     </div>
-                   </div>
-                 </motion.div>
-               ))}
-             </div>
-           </section>
-         )}
+      <main className={`transition-opacity duration-300 ${isPlayerOpen ? 'opacity-0 pointer-events-none h-0 overflow-hidden' : 'opacity-100'}`}>
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          {/* Featured Carousel */}
+          {!searchQuery && selectedCategories.length === 0 && (
+            <FeaturedCarousel 
+              featuredGames={featuredGames}
+              timeLeft={timeLeft}
+              onPlay={handlePlay}
+            />
+          )}
 
-         {/* Game Grid */}
-         <section className="mb-20">
-            <div className="flex items-center justify-between mb-6">
-               <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                 <Grid className="w-5 h-5 text-[var(--accent)]" />
-                 {searchQuery ? 'Search Results' : selectedCategories.length > 0 ? selectedCategories.join(', ') : 'Library'}
-               </h2>
-               <span className="text-sm text-[var(--fg-muted)] font-medium bg-[var(--bg-surface)] px-3 py-1 rounded-full">
-                 {filteredGames.length} Games
-               </span>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
-              <AnimatePresence mode="popLayout">
-                {visibleGames.map((game, idx) => (
-                  <GameCard 
-                    key={game.Title} 
-                    game={game} 
-                    index={idx} 
-                    onSelect={handleGameSelect} 
-                  />
-                ))}
-              </AnimatePresence>
-            </div>
-
-            {/* Infinite Scroll Sentinel */}
-            <div ref={loadMoreRef} className="h-20 flex items-center justify-center">
-              {visibleGamesCount < filteredGames.length && (
-                <div className="w-8 h-8 border-4 border-[var(--bg-card)] border-t-[var(--accent)] rounded-full animate-spin" />
-              )}
-            </div>
-
-            {filteredGames.length === 0 && (
-              <div className="flex flex-col items-center justify-center py-20 text-[var(--fg-muted)]">
-                <div className="w-20 h-20 bg-[var(--bg-surface)] rounded-full flex items-center justify-center mb-6">
-                  <Gamepad2 className="w-10 h-10 opacity-50" />
+          {/* Recommended Section */}
+          {!searchQuery && selectedCategories.length === 0 && favorites.length > 0 && (
+            <motion.section 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-12"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-xl bg-pink-500/10 text-pink-500">
+                    <Heart className="w-5 h-5 fill-current" />
+                  </div>
+                  <h2 className="text-xl font-bold text-[var(--fg)]">Recommended for You</h2>
                 </div>
-                <p className="text-lg font-medium">No games found</p>
-                <p className="text-sm opacity-60">Try searching for something else</p>
               </div>
-            )}
-         </section>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {gamesData
+                  .filter(g => !favorites.includes(g.Title))
+                  .sort(() => Math.random() - 0.5)
+                  .slice(0, 5)
+                  .map((game, idx) => (
+                    <GameCard 
+                      key={game.Title} 
+                      game={game} 
+                      index={idx} 
+                      onPlay={handlePlay}
+                      isFavorite={favorites.includes(game.Title)}
+                      onToggleFavorite={() => toggleFavorite(game.Title)}
+                    />
+                  ))}
+              </div>
+            </motion.section>
+          )}
+
+          {/* Main Grid */}
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-[var(--accent)]/10 text-[var(--accent)]">
+                <Gamepad2 className="w-5 h-5" />
+              </div>
+              <h2 className="text-xl font-bold text-[var(--fg)]">
+                {searchQuery ? 'Search Results' : selectedCategories.length > 0 ? 'Filtered Games' : 'All Games'}
+              </h2>
+            </div>
+            <div className="text-sm text-[var(--fg-muted)] font-medium">
+              {filteredGames.length} games found
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {visibleGames.map((game, idx) => (
+              <GameCard 
+                key={game.Title} 
+                game={game} 
+                index={idx} 
+                onPlay={handlePlay}
+                isFavorite={favorites.includes(game.Title)}
+                onToggleFavorite={() => toggleFavorite(game.Title)}
+              />
+            ))}
+          </div>
+
+          {/* Loading State */}
+          {visibleGames.length < filteredGames.length && (
+            <div ref={loadMoreRef} id="load-more" className="py-20 flex justify-center">
+              <div className="w-8 h-8 border-4 border-[var(--accent)]/20 border-t-[var(--accent)] rounded-full animate-spin" />
+            </div>
+          )}
+        </div>
       </main>
 
       {/* Back to Top */}
@@ -823,389 +726,43 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Player Overlay */}
-      <div 
-        ref={playerRef}
-        className={`fixed inset-0 z-50 bg-[var(--bg)] flex transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-          isPlayerOpen && selectedGame ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
-        }`}
-      >
-        {/* Left Sidebar: Preferences & Search */}
-        {!isFullscreen && (
-          <motion.div 
-            animate={{ width: isSidebarCollapsed ? 0 : 220 }}
-            className="bg-[var(--bg-surface)] border-r border-white/5 flex flex-col overflow-hidden relative"
-          >
-            <div className="p-6 border-b border-white/5">
-              <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2 uppercase tracking-widest opacity-50">
-                Preferences
-              </h3>
-              <div className="relative group">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--fg-muted)] group-focus-within:text-[var(--accent)] transition-colors" />
-                <input 
-                  type="text" 
-                  placeholder="Find next..." 
-                  value={playerSearchQuery}
-                  onChange={(e) => setPlayerSearchQuery(e.target.value)}
-                  className="w-full bg-[var(--bg-card)] border-none rounded-xl py-2 pl-9 pr-4 text-[10px] focus:ring-2 focus:ring-[var(--accent)] transition-all placeholder:text-[var(--fg-muted)]/50 text-[var(--fg)]"
-                />
-              </div>
-            </div>
-            
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide">
-              <div className="grid grid-cols-1 gap-2">
-                {playerFilteredGames.map(game => (
-                  <button
-                    key={`player-nav-${game.Title}`}
-                    onClick={() => handleGameSelect(game)}
-                    className={`flex items-center gap-3 p-2 rounded-xl transition-all hover:bg-[var(--bg-card)] group ${selectedGame?.Title === game.Title ? 'bg-[var(--bg-card)] ring-1 ring-[var(--accent)]/30' : ''}`}
-                  >
-                    <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
-                      <img src={game.Icon} alt={game.Title} className="w-full h-full object-cover group-hover:scale-110 transition-transform" referrerPolicy="no-referrer" />
-                    </div>
-                    <div className="text-left overflow-hidden">
-                      <div className="text-[10px] font-bold text-white truncate">{game.Title}</div>
-                      <div className="text-[9px] text-[var(--fg-muted)] truncate">{game.Categories[0]}</div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
+      <GamePlayer 
+        isOpen={isPlayerOpen}
+        onClose={closePlayer}
+        selectedGame={selectedGame}
+        openGames={openGames}
+        onPlay={handlePlay}
+        closeTab={closeTab}
+        refreshIframe={refreshIframe}
+        refreshKeys={refreshKeys}
+        toggleFullscreen={toggleFullscreen}
+        isFullscreen={isFullscreen}
+        playerFilteredGames={playerFilteredGames}
+        playerSearchQuery={playerSearchQuery}
+        setPlayerSearchQuery={setPlayerSearchQuery}
+        isPaused={isPaused}
+        setIsPaused={setIsPaused}
+        favorites={favorites}
+        toggleFavorite={toggleFavorite}
+        isSidebarCollapsed={isPlayerSidebarCollapsed}
+        setIsSidebarCollapsed={setIsPlayerSidebarCollapsed}
+      />
 
-        {/* Right Content Area */}
-        <div className="flex-1 flex flex-col overflow-hidden">
-          {/* Player Header (Top Right) */}
-          {!isFullscreen && selectedGame && (
-            <div className="flex items-center justify-between px-6 py-3 bg-[var(--bg-surface)]/80 backdrop-blur-xl border-b border-white/5">
-              <div className="flex items-center gap-4">
-                <button 
-                  onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-                  className="p-2 hover:bg-white/5 rounded-xl transition-colors"
-                >
-                   {isSidebarCollapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
-                </button>
-                <div className="w-9 h-9 rounded-xl overflow-hidden border border-white/10">
-                  <img src={selectedGame.Icon} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div>
-                  <h2 className="text-base font-bold text-white leading-none">{selectedGame.Title}</h2>
-                  <div className="flex flex-wrap gap-1.5 mt-1">
-                    {selectedGame.Categories.map(cat => (
-                      <span key={cat} className="text-[8px] text-[var(--fg-muted)] bg-[var(--bg-card)] px-1.5 py-0.5 rounded-md uppercase font-bold tracking-tighter">
-                        {cat}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-2">
-                <button 
-                  onClick={() => setIsPaused(!isPaused)}
-                  className={`p-2.5 rounded-xl transition-all ${isPaused ? 'bg-[var(--accent)] text-white' : 'bg-[var(--bg-card)] text-[var(--fg)] hover:bg-[var(--accent)] hover:text-white'}`}
-                  title={isPaused ? "Resume" : "Pause"}
-                >
-                  {isPaused ? <Play className="w-5 h-5 fill-current" /> : <Pause className="w-5 h-5" />}
-                </button>
-                <button 
-                  onClick={handleRandomGame}
-                  className="p-2.5 bg-[var(--bg-card)] hover:bg-[var(--accent)] hover:text-white text-[var(--fg)] rounded-xl transition-all"
-                  title="Random Game"
-                >
-                  <Shuffle className="w-5 h-5" />
-                </button>
-                <button 
-                  onClick={refreshIframe}
-                  className="p-2.5 bg-[var(--bg-card)] hover:bg-[var(--accent)] hover:text-white text-[var(--fg)] rounded-xl transition-all"
-                  title="Refresh"
-                >
-                  <RotateCcw className="w-5 h-5" />
-                </button>
-                <button 
-                  onClick={toggleFullscreen}
-                  className="p-2.5 bg-[var(--bg-card)] hover:bg-[var(--accent)] hover:text-white text-[var(--fg)] rounded-xl transition-all"
-                  title="Fullscreen"
-                >
-                  <Maximize className="w-5 h-5" />
-                </button>
-                <button 
-                  onClick={() => window.open(selectedGame?.IFrame, '_blank')}
-                  className="p-2.5 bg-[var(--bg-card)] hover:bg-[var(--accent)] hover:text-white text-[var(--fg)] rounded-xl transition-all"
-                  title="Open in New Tab"
-                >
-                  <ExternalLink className="w-5 h-5" />
-                </button>
-                <div className="w-px h-6 bg-white/5 mx-1" />
-                <button 
-                  onClick={closePlayer}
-                  className="p-2.5 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white rounded-xl transition-all"
-                  title="Close"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Main Content Area */}
-          <div className="flex-1 relative bg-black overflow-hidden shadow-2xl">
-            {openGames.map((game) => {
-              const isActive = selectedGame?.Title === game.Title;
-              if (!isActive && !settings.enableTabs) return null;
-              
-              return (
-                <div 
-                  key={game.Title}
-                  className={`absolute inset-0 transition-opacity duration-300 ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none invisible'}`}
-                  style={{ 
-                    visibility: isActive ? 'visible' : 'hidden',
-                  }}
-                >
-                  <iframe
-                    key={`${game.Title}-${refreshKeys[game.Title] || 0}`}
-                    src={isActive || settings.enableTabs ? game.IFrame : 'about:blank'}
-                    className={`w-full h-full border-none overflow-hidden transition-all duration-500 ${isPaused ? 'blur-xl scale-95 opacity-50 grayscale' : ''}`}
-                    sandbox={settings.cleanMode 
-                      ? "allow-forms allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-same-origin allow-modals allow-storage-access-by-user-activation"
-                      : "allow-forms allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin allow-modals allow-downloads allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                    }
-                    allow="autoplay; fullscreen; keyboard; pointer-lock; gamepad; camera; microphone; geolocation"
-                    title={game.Title}
-                    loading={isActive ? "eager" : "lazy"}
-                    // @ts-ignore
-                    fetchPriority={isActive ? "high" : "low"}
-                    referrerPolicy="no-referrer"
-                    // @ts-ignore
-                    scrolling="no"
-                  />
-                </div>
-              );
-            })}
-            
-            <AnimatePresence>
-              {isPaused && (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/40 backdrop-blur-sm"
-                >
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => setIsPaused(false)}
-                    className="w-24 h-24 bg-[var(--accent)] text-white rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/40"
-                  >
-                    <Play className="w-10 h-10 fill-current ml-2" />
-                  </motion.button>
-                  <h3 className="mt-6 text-2xl font-bold text-white tracking-widest uppercase opacity-80">Paused</h3>
-                </motion.div>
-              )}
-            </AnimatePresence>
-            
-            <div className="absolute inset-0 -z-10 flex items-center justify-center bg-[var(--bg)]">
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-12 h-12 border-4 border-[var(--bg-card)] border-t-[var(--accent)] rounded-full animate-spin" />
-                <p className="text-sm font-medium text-[var(--fg-muted)]">Loading Game...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Side Menu Drawer (One UI Style Bottom Sheet on Mobile, Side on Desktop) */}
-      <AnimatePresence>
-        {isSideMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsSideMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"
-            />
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed right-0 top-0 bottom-0 w-80 bg-[var(--bg-surface)] border-l border-white/5 z-[70] shadow-2xl flex flex-col rounded-l-3xl overflow-hidden"
-            >
-              <div className="p-6 border-b border-white/5 flex items-center justify-between bg-[var(--bg-card)]">
-                <div className="flex items-center gap-3">
-                  {menuView !== 'main' && (
-                    <button 
-                      onClick={() => setMenuView('main')}
-                      className="p-1 hover:bg-white/10 rounded-full transition-colors"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                  )}
-                  <h2 className="text-xl font-bold text-white">
-                    {menuView === 'settings' ? 'Settings' : menuView === 'tabs' ? 'Tabs' : 'Menu'}
-                  </h2>
-                </div>
-                <div className="flex items-center gap-2">
-                  {user ? (
-                    <button 
-                      onClick={() => {
-                        setShowProfileSettings(true);
-                        setIsSideMenuOpen(false);
-                      }}
-                      className="w-8 h-8 rounded-full overflow-hidden border border-white/10"
-                    >
-                      {user.photoURL ? (
-                        <img src={user.photoURL} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                      ) : (
-                        <User className="w-full h-full p-1.5 text-[var(--fg-muted)] bg-[var(--bg-surface)]" />
-                      )}
-                    </button>
-                  ) : (
-                    <button 
-                      onClick={() => {}} // WIP
-                      className="p-2 hover:bg-white/10 rounded-full transition-colors cursor-not-allowed opacity-50 relative group"
-                    >
-                      <User className="w-5 h-5" />
-                      <div className="absolute -top-1 -right-1 bg-amber-500 text-[8px] font-black px-1 rounded-full text-black">WIP</div>
-                    </button>
-                  )}
-                  <button 
-                    onClick={() => setIsSideMenuOpen(false)}
-                    className="p-2 hover:bg-white/10 rounded-full transition-colors"
-                  >
-                    <X className="w-6 h-6" />
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex-1 overflow-y-auto p-4">
-                {menuView === 'main' ? (
-                  <div className="space-y-3">
-                    <button 
-                      onClick={() => setMenuView('settings')}
-                      className="w-full flex items-center gap-4 p-4 rounded-2xl bg-[var(--bg-card)] hover:bg-[var(--bg)] transition-colors group"
-                    >
-                      <div className="w-10 h-10 rounded-full bg-[var(--bg-surface)] flex items-center justify-center group-hover:bg-[var(--accent)] transition-colors">
-                        <Settings className="w-5 h-5 text-[var(--fg)] group-hover:text-white" />
-                      </div>
-                      <span className="text-sm font-semibold text-[var(--fg)]">Settings</span>
-                      <ChevronRight className="w-4 h-4 ml-auto text-[var(--fg-muted)]" />
-                    </button>
-                    
-                    <button 
-                      onClick={() => {}} // Disabled
-                      className="w-full flex items-center gap-4 p-4 rounded-2xl bg-[var(--bg-card)] text-[var(--fg-muted)] cursor-not-allowed transition-colors group"
-                    >
-                      <div className="w-10 h-10 rounded-full bg-[var(--bg-surface)] flex items-center justify-center transition-colors">
-                        <Home className="w-5 h-5 opacity-50" />
-                      </div>
-                      <span className="text-sm font-semibold opacity-50">Social</span>
-                      <div className="ml-auto flex items-center gap-2">
-                        <span className="text-[10px] bg-amber-500/20 text-amber-500 px-2 py-0.5 rounded-full font-bold">WIP</span>
-                        <Lock className="w-4 h-4 text-[var(--fg-muted)] opacity-50" />
-                      </div>
-                    </button>
-
-                    <button 
-                      onClick={() => {
-                        setShowUpdateLog(true);
-                        setIsSideMenuOpen(false);
-                      }}
-                      className="w-full flex items-center gap-4 p-4 rounded-2xl bg-[var(--bg-card)] hover:bg-[var(--bg)] transition-colors group"
-                    >
-                      <div className="w-10 h-10 rounded-full bg-[var(--bg-surface)] flex items-center justify-center group-hover:bg-[var(--accent)] transition-colors">
-                        <History className="w-5 h-5 text-[var(--fg)] group-hover:text-white" />
-                      </div>
-                      <span className="text-sm font-semibold text-[var(--fg)]">Update Log</span>
-                      <ChevronRight className="w-4 h-4 ml-auto text-[var(--fg-muted)]" />
-                    </button>
-                  </div>
-                ) : menuView === 'settings' ? (
-                  <div className="space-y-4">
-                    <div className="p-4 rounded-2xl bg-[var(--bg-card)] flex flex-col gap-4">
-                      <span className="text-sm font-semibold">Theme</span>
-                      <div className="grid grid-cols-5 gap-2">
-                        {[
-                          { id: 'default', color: 'bg-blue-500' },
-                          { id: 'emerald', color: 'bg-emerald-500' },
-                          { id: 'rose', color: 'bg-rose-500' },
-                          { id: 'amber', color: 'bg-amber-500' },
-                          { id: 'sky', color: 'bg-sky-500' },
-                          { id: 'violet', color: 'bg-violet-500' }
-                        ].map((t) => (
-                          <button
-                            key={t.id}
-                            onClick={() => setTheme(t.id)}
-                            className={`aspect-square rounded-xl ${t.color} transition-all ${
-                              theme === t.id ? 'ring-2 ring-white ring-offset-2 ring-offset-[var(--bg-card)] scale-110' : 'opacity-50 hover:opacity-100'
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="p-4 rounded-2xl bg-[var(--bg-card)] flex items-center justify-between">
-                      <span className="text-sm font-semibold">Auto Fullscreen</span>
-                      <button 
-                        onClick={() => setSettings({ ...settings, autoFullscreen: !settings.autoFullscreen })}
-                        className={`w-12 h-7 rounded-full transition-colors relative ${settings.autoFullscreen ? 'bg-[var(--accent)]' : 'bg-[var(--bg-surface)]'}`}
-                      >
-                        <motion.div 
-                          animate={{ x: settings.autoFullscreen ? 22 : 2 }}
-                          className="absolute top-1 w-5 h-5 bg-white rounded-full shadow-sm" 
-                        />
-                      </button>
-                    </div>
-                    <div className="p-4 rounded-2xl bg-[var(--bg-card)] flex items-center justify-between">
-                      <span className="text-sm font-semibold">Enable Tabs</span>
-                      <button 
-                        onClick={() => {
-                          const newVal = !settings.enableTabs;
-                          setSettings({ ...settings, enableTabs: newVal });
-                          if (!newVal) {
-                            setOpenGames(selectedGame ? [selectedGame] : []);
-                          }
-                        }}
-                        className={`w-12 h-7 rounded-full transition-colors relative ${settings.enableTabs ? 'bg-[var(--accent)]' : 'bg-[var(--bg-surface)]'}`}
-                      >
-                        <motion.div 
-                          animate={{ x: settings.enableTabs ? 22 : 2 }}
-                          className="absolute top-1 w-5 h-5 bg-white rounded-full shadow-sm" 
-                        />
-                      </button>
-                    </div>
-                    <div className="p-4 rounded-2xl bg-[var(--bg-card)] flex items-center justify-between">
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold">Clean Mode</span>
-                        <span className="text-[10px] text-[var(--fg-muted)]">Blocks ads & popups</span>
-                      </div>
-                      <button 
-                        onClick={() => setSettings({ ...settings, cleanMode: !settings.cleanMode })}
-                        className={`w-12 h-7 rounded-full transition-colors relative ${settings.cleanMode ? 'bg-[var(--accent)]' : 'bg-[var(--bg-surface)]'}`}
-                      >
-                        <motion.div 
-                          animate={{ x: settings.cleanMode ? 22 : 2 }}
-                          className="absolute top-1 w-5 h-5 bg-white rounded-full shadow-sm" 
-                        />
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center py-10 text-[var(--fg-muted)]">
-                    <Settings className="w-10 h-10 mb-2 opacity-50" />
-                    <p className="text-sm">Configure your experience</p>
-                  </div>
-                )}
-              </div>
-              
-              <div className="p-6 bg-[var(--bg-card)] text-center">
-                <p className="text-xs text-[var(--fg-muted)] font-medium">Coral</p>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      <Sidebar 
+        isOpen={isSideMenuOpen}
+        onClose={() => setIsSideMenuOpen(false)}
+        user={user}
+        favorites={favorites}
+        games={games}
+        onPlay={handlePlay}
+        settings={settings}
+        setSettings={setSettings}
+        theme={theme}
+        setTheme={setTheme}
+        menuView={menuView}
+        setMenuView={setMenuView}
+        onShowUpdateLog={() => setShowUpdateLog(true)}
+      />
 
       {/* Update Log Overlay */}
       <AnimatePresence>
@@ -1260,7 +817,7 @@ export default function App() {
                                 key={i} 
                                 onClick={() => {
                                   if (game) {
-                                    handleGameSelect(game);
+                                    handlePlay(game);
                                     setShowUpdateLog(false);
                                   }
                                 }}

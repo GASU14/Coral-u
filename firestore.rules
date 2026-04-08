@@ -12,6 +12,7 @@ service cloud.firestore {
     //   - email: string (required)
     //   - username: string (required)
     //   - photoURL: string (required)
+    //   - favorites: list (optional)
     //   - createdAt: timestamp (required)
     //
     // Collection: threads
@@ -56,7 +57,8 @@ service cloud.firestore {
              data.email is string &&
              data.username is string && data.username.size() > 0 && data.username.size() < 50 &&
              data.photoURL is string &&
-             data.createdAt is timestamp;
+             data.createdAt is timestamp &&
+             (!('favorites' in data) || data.favorites is list);
     }
 
     function isValidThread(data) {

@@ -9,6 +9,7 @@
         "email": { "type": "string", "format": "email" },
         "username": { "type": "string" },
         "photoURL": { "type": "string", "format": "uri" },
+        "favorites": { "type": "array", "items": { "type": "string" } },
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["uid", "email", "username", "photoURL", "createdAt"]

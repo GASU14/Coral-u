@@ -70,12 +70,13 @@ export default function Auth({ onAuthSuccess }: { onAuthSuccess: () => void }) {
       const user = result.user;
 
       const userDoc = await getDoc(doc(db, 'users', user.uid));
-      if (!userDoc.exists()) {
+        if (!userDoc.exists()) {
         await setDoc(doc(db, 'users', user.uid), {
           uid: user.uid,
           email: user.email,
           username: user.displayName || generateRandomUsername(),
           photoURL: user.photoURL || AVATARS[0],
+          favorites: [],
           createdAt: serverTimestamp()
         });
       }
@@ -136,6 +137,7 @@ export default function Auth({ onAuthSuccess }: { onAuthSuccess: () => void }) {
           email: user.email,
           username: username,
           photoURL: photoURL,
+          favorites: [],
           createdAt: serverTimestamp()
         });
       }
@@ -287,25 +289,6 @@ export default function Auth({ onAuthSuccess }: { onAuthSuccess: () => void }) {
         >
           {isLogin ? "Need an account? Sign Up" : "Already have an account? Sign In"}
         </button>
-        
-        <div className="mt-6 flex flex-col items-center gap-3">
-          <button 
-            onClick={() => setShowDebug(!showDebug)}
-            className="flex items-center justify-center gap-2 opacity-30 hover:opacity-100 transition-opacity"
-          >
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
-            <span className="text-[10px] font-mono tracking-widest uppercase">Firebase Project: u-site-e498b</span>
-          </button>
-
-          {showDebug && (
-            <div className="w-full p-4 bg-black/40 rounded-2xl text-[10px] font-mono text-left text-[var(--fg-muted)] border border-white/5">
-              <p className="text-emerald-400 mb-2 font-bold uppercase">Debug Info:</p>
-              <p>Project ID: {auth.app.options.projectId}</p>
-              <p>API Key: {auth.app.options.apiKey?.slice(0, 10)}...</p>
-              <p className="mt-2 text-white/50">If this ID doesn't match your console URL, you are in a remixed app and need to set up Firebase again.</p>
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );
