@@ -30,7 +30,6 @@ interface Game {
 
 export default function App() {
   const [user, setUser] = useState<any>(null);
-  const [favorites, setFavorites] = useState<string[]>([]);
   const [showProfileSettings, setShowProfileSettings] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(() => {
     return new URLSearchParams(window.location.search).get('unlocked') === 'true';
@@ -98,36 +97,6 @@ export default function App() {
     });
     return () => unsubscribe();
   }, []);
-
-  // Sync favorites with Firestore
-  useEffect(() => {
-    if (!user) {
-      setFavorites([]);
-      return;
-    }
-    const unsubscribe = onSnapshot(doc(db, 'users', user.uid), (doc) => {
-      if (doc.exists()) {
-        setFavorites(doc.data().favorites || []);
-      }
-    });
-    return () => unsubscribe();
-  }, [user]);
-
-  const toggleFavorite = async (gameTitle: string) => {
-    if (!user) {
-      setShowAuth(true);
-      return;
-    }
-    const isFavorited = favorites.includes(gameTitle);
-    const userRef = doc(db, 'users', user.uid);
-    try {
-      await updateDoc(userRef, {
-        favorites: isFavorited ? arrayRemove(gameTitle) : arrayUnion(gameTitle)
-      });
-    } catch (error) {
-      console.error('Error toggling favorite:', error);
-    }
-  };
 
   // Context Menu listeners
   useEffect(() => {
@@ -243,7 +212,9 @@ export default function App() {
 
   // Game Data Logic
   const games = useMemo(() => {
-    return [...(gamesData as Game[])].sort((a, b) => a.Title.localeCompare(b.Title));
+    return [...(gamesData as Game[])]
+      .filter(g => !g.Icon.includes('gn-math'))
+      .sort((a, b) => a.Title.localeCompare(b.Title));
   }, []);
 
   const rotationIntervalMs = 3 * 60 * 60 * 1000; // 3 hours
@@ -295,9 +266,9 @@ export default function App() {
     return games.filter(game => {
       const matchesSearch = game.Title.toLowerCase().includes(debouncedSearchQuery.toLowerCase());
       
-      // Multi-category match (must match ALL selected categories)
+      // Multi-category match (now matches if any selected category is present)
       const matchesCategory = selectedCategories.length === 0 || 
-        selectedCategories.every(cat => game.Categories.includes(cat));
+        selectedCategories.some(cat => game.Categories.includes(cat));
 
       // Preference filter: finds games with at least 3 matching categories
       let matchesPreference = true;
@@ -536,40 +507,6 @@ export default function App() {
             />
           )}
 
-          {/* Recommended Section */}
-          {!searchQuery && selectedCategories.length === 0 && favorites.length > 0 && (
-            <motion.section 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-12"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-pink-500/10 text-pink-500">
-                    <Heart className="w-5 h-5 fill-current" />
-                  </div>
-                  <h2 className="text-xl font-bold text-[var(--fg)]">Recommended for You</h2>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                {gamesData
-                  .filter(g => !favorites.includes(g.Title))
-                  .sort(() => Math.random() - 0.5)
-                  .slice(0, 5)
-                  .map((game, idx) => (
-                    <GameCard 
-                      key={game.Title} 
-                      game={game} 
-                      index={idx} 
-                      onPlay={handlePlay}
-                      isFavorite={favorites.includes(game.Title)}
-                      onToggleFavorite={() => toggleFavorite(game.Title)}
-                    />
-                  ))}
-              </div>
-            </motion.section>
-          )}
-
           {/* Main Grid */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
@@ -592,8 +529,6 @@ export default function App() {
                 game={game} 
                 index={idx} 
                 onPlay={handlePlay}
-                isFavorite={favorites.includes(game.Title)}
-                onToggleFavorite={() => toggleFavorite(game.Title)}
               />
             ))}
           </div>
@@ -742,17 +677,15 @@ export default function App() {
         setPlayerSearchQuery={setPlayerSearchQuery}
         isPaused={isPaused}
         setIsPaused={setIsPaused}
-        favorites={favorites}
-        toggleFavorite={toggleFavorite}
         isSidebarCollapsed={isPlayerSidebarCollapsed}
         setIsSidebarCollapsed={setIsPlayerSidebarCollapsed}
+        playerRef={playerRef}
       />
 
       <Sidebar 
         isOpen={isSideMenuOpen}
         onClose={() => setIsSideMenuOpen(false)}
         user={user}
-        favorites={favorites}
         games={games}
         onPlay={handlePlay}
         settings={settings}

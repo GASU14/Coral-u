@@ -31,10 +31,9 @@ interface GamePlayerProps {
   setPlayerSearchQuery: (query: string) => void;
   isPaused: boolean;
   setIsPaused: (paused: boolean) => void;
-  favorites: string[];
-  toggleFavorite: (gameTitle: string) => void;
   isSidebarCollapsed: boolean;
   setIsSidebarCollapsed: (collapsed: boolean) => void;
+  playerRef: React.RefObject<HTMLDivElement | null>;
 }
 
 export function GamePlayer({
@@ -53,12 +52,10 @@ export function GamePlayer({
   setPlayerSearchQuery,
   isPaused,
   setIsPaused,
-  favorites,
-  toggleFavorite,
   isSidebarCollapsed,
-  setIsSidebarCollapsed
+  setIsSidebarCollapsed,
+  playerRef
 }: GamePlayerProps) {
-  const playerRef = useRef<HTMLDivElement>(null);
   const [showControls, setShowControls] = useState(true);
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -77,8 +74,6 @@ export function GamePlayer({
   }, [handleMouseMove]);
 
   if (!selectedGame) return null;
-
-  const isFavorited = favorites.includes(selectedGame.Title);
 
   return (
     <AnimatePresence>
@@ -148,12 +143,6 @@ export function GamePlayer({
                     title={isSidebarCollapsed ? "Show Sidebar" : "Hide Sidebar"}
                   >
                     <Layout className="w-5 h-5" />
-                  </button>
-                  <button 
-                    onClick={() => toggleFavorite(selectedGame.Title)}
-                    className={`p-3 rounded-2xl transition-all hover:scale-110 active:scale-95 ${isFavorited ? 'bg-red-500/20 text-red-500' : 'bg-white/5 text-white/50 hover:text-white'}`}
-                  >
-                    <Heart className={`w-5 h-5 ${isFavorited ? 'fill-current' : ''}`} />
                   </button>
                   <button 
                     onClick={refreshIframe}

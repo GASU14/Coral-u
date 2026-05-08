@@ -19,7 +19,6 @@ interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
   user: any;
-  favorites: string[];
   games: Game[];
   onPlay: (game: Game) => void;
   theme: string;
@@ -35,7 +34,6 @@ export function Sidebar({
   isOpen,
   onClose,
   user,
-  favorites,
   games,
   onPlay,
   theme,
@@ -46,8 +44,6 @@ export function Sidebar({
   setMenuView,
   onShowUpdateLog
 }: SidebarProps) {
-  const favoriteGames = games.filter(g => favorites.includes(g.Title));
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -100,33 +96,6 @@ export function Sidebar({
                       >
                         <LogOut className="w-5 h-5" />
                       </button>
-                    </div>
-                  )}
-
-                  {/* Favorites Section */}
-                  {favoriteGames.length > 0 && (
-                    <div className="space-y-4">
-                      <h3 className="text-xs font-black text-[var(--fg-muted)] uppercase tracking-widest flex items-center gap-2">
-                        <Heart className="w-3 h-3 text-red-500 fill-red-500" /> Favorites
-                      </h3>
-                      <div className="grid grid-cols-4 gap-3">
-                        {favoriteGames.slice(0, 8).map(game => (
-                          <button
-                            key={`fav-${game.Title}`}
-                            onClick={() => {
-                              onPlay(game);
-                              onClose();
-                            }}
-                            className="aspect-square rounded-xl overflow-hidden border border-white/5 hover:scale-110 transition-all group relative"
-                            title={game.Title}
-                          >
-                            <img src={game.Icon} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <Play className="w-4 h-4 text-white fill-white" />
-                            </div>
-                          </button>
-                        ))}
-                      </div>
                     </div>
                   )}
 
